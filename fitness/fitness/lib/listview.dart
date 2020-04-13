@@ -1,34 +1,42 @@
+import 'package:MyGymPro/wpage.dart';
 import 'package:flutter/material.dart';
 
-ListView weightSection(){
+class WeightSection extends StatelessWidget{
+@override
+Widget build(BuildContext context){
 return ListView(
   children: <Widget>[
-                  Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Card(
+              margin: EdgeInsets.all(10),
+              child: Container(
+              width: 150,
+              height: 140,
+              child: RaisedButton(
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => WorkoutPage()),
+                  );
+                },
+                padding: new EdgeInsets.fromLTRB(0, 0, 0, 5),
+                color: Colors.greenAccent[200],
+                child: Column(
                   children: <Widget>[
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Card(
-                            margin: EdgeInsets.all(10),
-                            child: Container(
-                              width: 150,
-                              height: 140,
-                              child: RaisedButton(
-                                onPressed: (){},
-                                padding: new EdgeInsets.fromLTRB(0, 0, 0, 5),
-                                color: Colors.greenAccent[200],
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      padding: new EdgeInsets.fromLTRB(0, 40, 0, 0),
-                                      child:Icon(
-                                        Icons.directions_bike,
-                                        color: Colors.white,
-                                        size: 60,
-                                      ),
-                                    ),
+                    Container(
+                      padding: new EdgeInsets.fromLTRB(0, 40, 0, 0),
+                        child:Icon(
+                            Icons.directions_bike,
+                              color: Colors.white,
+                              size: 60,
+                              ),
+                    ),
                                     Container(
                                       padding: new EdgeInsets.fromLTRB(0, 15, 0, 0),
                                         child: Text('CHEST'),
@@ -47,7 +55,12 @@ return ListView(
                               width: 150,
                               height: 140,
                               child: RaisedButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => WorkoutPage()),
+                                    );
+                                },
                                 padding: new EdgeInsets.fromLTRB(0, 0, 0, 5),
                                 color: Colors.greenAccent[200],
                                 child: Column(
@@ -87,7 +100,12 @@ return ListView(
                               width: 150,
                               height: 140,
                               child: RaisedButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => WorkoutPage()),
+                                    );
+                                },
                                 padding: new EdgeInsets.fromLTRB(0, 0, 0, 5),
                                 color: Colors.greenAccent[200],
                                 child: Column(
@@ -121,7 +139,12 @@ return ListView(
                               width: 150,
                               height: 140,
                               child: RaisedButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => WorkoutPage()),
+                                    );
+                                },
                                 padding: new EdgeInsets.fromLTRB(0, 0, 0, 5),
                                 color: Colors.greenAccent[200],
                                 child: Column(
@@ -161,7 +184,12 @@ return ListView(
                               width: 150,
                               height: 140,
                               child: RaisedButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => WorkoutPage()),
+                                    );
+                                },
                                 padding: new EdgeInsets.fromLTRB(0, 0, 0, 5),
                                 color: Colors.greenAccent[200],
                                 child: Column(
@@ -195,7 +223,12 @@ return ListView(
                               width: 150,
                               height: 140,
                               child: RaisedButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => WorkoutPage()),
+                                    );
+                                },
                                 padding: new EdgeInsets.fromLTRB(0, 0, 0, 5),
                                 color: Colors.greenAccent[200],
                                 child: Column(
@@ -235,7 +268,12 @@ return ListView(
                               width: 150,
                               height: 140,
                               child: RaisedButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => WorkoutPage()),
+                                    );
+                                },
                                 padding: new EdgeInsets.fromLTRB(0, 0, 0, 5),
                                 color: Colors.greenAccent[200],
                                 child: Column(
@@ -269,7 +307,12 @@ return ListView(
                               width: 150,
                               height: 140,
                               child: RaisedButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => WorkoutPage()),
+                                    );
+                                },
                                 padding: new EdgeInsets.fromLTRB(0, 0, 0, 5),
                                 color: Colors.greenAccent[200],
                                 child: Column(
@@ -309,7 +352,12 @@ return ListView(
                               width: 150,
                               height: 140,
                               child: RaisedButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => WorkoutPage()),
+                                    );
+                                },
                                 padding: new EdgeInsets.fromLTRB(0, 0, 0, 5),
                                 color: Colors.greenAccent[200],
                                 child: Column(
@@ -343,7 +391,12 @@ return ListView(
                               width: 150,
                               height: 140,
                               child: RaisedButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => WorkoutPage()),
+                                    );
+                                },
                                 padding: new EdgeInsets.fromLTRB(0, 0, 0, 5),
                                 color: Colors.greenAccent[200],
                                 child: Column(
@@ -378,4 +431,4 @@ return ListView(
                 ]
 );
 }
-                
+}               
