@@ -1,6 +1,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:password/password.dart';
 
 class SignUpPage extends StatefulWidget
 {
@@ -10,6 +13,53 @@ class SignUpPage extends StatefulWidget
 
 class _SignUpPageState extends State<SignUpPage>
 {
+  String signUpError = "";
+  bool signupFlag = false;
+  final TextEditingController userController = new TextEditingController();
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
+
+  Future doSignup(String email, String username, String password) async
+  {
+    var hash = Password.hash(password, new PBKDF2());
+
+    Map data = {
+      "username" : username,
+      "email": email,
+      "password": hash
+    };
+    
+    var jsonResponse;
+    var response = await http.post("http://my-gym-pro.herokuapp.com/api/signup", body: json.encode(data),
+    headers: {"accept": "application/json", "content-type": "application/json" });
+    signupFlag = false;
+  
+    if (response.statusCode == 200)
+    {
+      jsonResponse = json.decode(response.body);
+      print("Response Status: ${response.statusCode}");
+      print("Response body: ${response.body}");
+
+      if (jsonResponse != null)
+      {
+        signupFlag = true;
+        setState(() {
+          signUpError = "Account Created, please verify your email.";
+         });
+      } 
+    }
+    else
+    {
+      final parsed = jsonDecode(response.body);
+      final error = parsed['Error'];
+      setState(() { 
+        signUpError = error;   
+      });
+      print(error);
+    }
+
+  }
+
   @override
   Widget build(BuildContext context)
   {
@@ -32,6 +82,7 @@ class _SignUpPageState extends State<SignUpPage>
                   child: Column(
                     children: <Widget>[
                       TextField(
+                        controller: emailController,
                         decoration: InputDecoration(
                             labelText: 'EMAIL',
                             labelStyle: TextStyle(
@@ -43,6 +94,7 @@ class _SignUpPageState extends State<SignUpPage>
                       ),
                       SizedBox(height: 20.0),
                       TextField(
+                        controller: userController,
                         decoration: InputDecoration(
                             labelText: 'USERNAME',
                             labelStyle: TextStyle(
@@ -54,6 +106,7 @@ class _SignUpPageState extends State<SignUpPage>
                       ),
                       SizedBox(height: 20.0),
                       TextField(
+                        controller: passwordController,
                         decoration: InputDecoration(
                             labelText: 'PASSWORD',
                             labelStyle: TextStyle(
@@ -64,7 +117,13 @@ class _SignUpPageState extends State<SignUpPage>
                                 borderSide: BorderSide(color: Colors.green))),
                                 obscureText: true,
                       ),
-                      SizedBox(height: 40.0),
+                      Container(
+                      alignment: Alignment(-1.0,0.0),
+                      padding: EdgeInsets.only(top:15),
+                      child: Text("$signUpError",
+                      style: TextStyle(color: signupFlag ? Colors.green : Colors.red)),
+                      ),
+                      SizedBox(height: 25.0),
                       Container(
                         height: 40.0,
                         child: Material(
@@ -73,7 +132,9 @@ class _SignUpPageState extends State<SignUpPage>
                           color: Colors.green,
                           elevation: 7.0,
                           child: GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              doSignup(emailController.text.replaceAll("\t",""), userController.text.replaceAll("\t",""), passwordController.text.replaceAll("\t",""));
+                            },
                             child: Center(
                               child: Text(
                                 'Register',
